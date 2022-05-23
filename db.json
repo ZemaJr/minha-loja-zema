@@ -1,0 +1,42 @@
+{
+  "usuario": [
+    {
+      "id": 10,
+      "nome": "João I",
+      "cpf": 96385245655,
+      "login": "thiago@wiz.com",
+      "senha": "789"
+    },
+    {
+      "id": 11,
+      "nome": "Zêma Jr",
+      "cpf": 74185296332,
+      "login": "zema@wiz.com",
+      "senha": "123"
+    },
+    {
+      "id": 17,
+      "nome": "João Matheus Editado",
+      "cpf": 85632547188,
+      "login": "joao@wiz.com",
+      "senha": "000"
+    }
+  ],
+  "cliente": [
+    {
+      "id": 1,
+      "tipo": "1",
+      "cpf": "00987654321",
+      "cnpj": "12345678901234",
+      "nome": "Elena Stark",
+      "razaoSocial": "Corporação Wiz"
+    }
+  ],
+  "produto": [
+    {
+      "id": 1,
+      "nome": "PC Dell 5200",
+      "preco": "6500"
+    }
+  ]
+}

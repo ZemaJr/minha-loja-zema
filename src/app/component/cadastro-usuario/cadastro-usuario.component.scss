@@ -1,0 +1,104 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.localizar {
+  padding: 1px 10px;
+}
+
+.cadastrar,
+.relatorio {
+  padding: 10px;
+}
+
+.localizar,
+.cadastrar,
+.relatorio {
+  border-radius: 5px;
+  border-color: orangered;
+}
+
+legend {
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 18px;
+  color: orangered;
+}
+
+.formulario {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.col0,
+.col1,
+.col2,
+.col3 {
+  display: flex;
+}
+
+.col0 .usuarioId {
+  width: 100%;
+  margin: 2px;
+}
+
+.col1 .usuarioId,
+.usuarioNome,
+.usuarioCPF {
+  width: 100%;
+  margin: 2px;
+}
+
+.col2 .usuarioEmail,
+.usuarioSenha {
+  width: 100%;
+  margin: 2px;
+}
+
+.botaoId,
+.botaoSalvar,
+.botaoAlterar,
+.botaoExcluir,
+.botaoNovo {
+  margin: 2px;
+  padding: 10px;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+}
+
+button,
+input {
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: orangered;
+  transition: 1s;
+}
+
+table {
+  width: 100%;
+  margin: 10px auto 0px;
+}
+
+th,
+p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+th {
+  background-color: orangered;
+}
+
+p {
+  text-align: center;
+}
+
+svg,
+path {
+  width: 20px;
+}
