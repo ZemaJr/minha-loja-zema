@@ -1,0 +1,193 @@
+<form class="formulario">
+  <fieldset class="localizar">
+    <legend>Localizar</legend>
+    <div class="col0">
+      <mat-form-field
+        class="usuarioId"
+        type="number"
+        appearance="fill"
+        [color]="produtoId.value"
+      >
+        <mat-label>Por ID:</mat-label>
+        <mat-select [formControl]="produtoId" (click)="novo()">
+          <ul>
+            <li *ngFor="let produto of products">
+              <mat-option value="{{ produto.id }}">{{ produto.id }}</mat-option>
+            </li>
+          </ul>
+        </mat-select>
+      </mat-form-field>
+      <button
+        class="botaoId"
+        mat-raised-button
+        color="warn"
+        (click)="buscarDados()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path
+            d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z"
+          />
+        </svg>
+        Buscar
+      </button>
+    </div>
+  </fieldset>
+
+  <fieldset class="cadastrar">
+    <legend>Cadastrar</legend>
+
+    <div class="col1">
+      <mat-form-field class="usuarioId" appearance="fill" disabled>
+        <mat-label>ID:</mat-label>
+        <input
+          type="text"
+          matInput
+          disabled
+          value="{{ produtoId.value }}"
+          maxlength="3"
+          placeholder="Ex.: 999."
+        />
+      </mat-form-field>
+
+      <mat-form-field class="usuarioNome" appearance="fill">
+        <mat-label>Nome:</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="produtoNome"
+          #nome
+          maxlength="20"
+          placeholder="Ex.: PC Dell 5200."
+        />
+        <mat-hint align="end">{{ nome.value.length }} / 20</mat-hint>
+        <mat-error *ngIf="usuarioNome.hasError('required')">
+          <strong>Nome</strong> é obrigatório!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="usuarioCPF" appearance="fill">
+        <mat-label>Preço (R$):</mat-label>
+        <input
+          matInput
+          [formControl]="produtoPreco"
+          #preco
+          maxlength="11"
+          type="number"
+          placeholder="Ex.: R$ 950,00."
+        />
+        <mat-hint align="end">{{ preco.value?.length }} / 11</mat-hint>
+        <mat-error *ngIf="produtoPreco.hasError('required')">
+          <strong>Preço</strong> é obrigatório!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col3">
+      <button
+        class="botaoSalvar"
+        mat-raised-button
+        color="warn"
+        (click)="salvarDados()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <path
+            d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512H413.3C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM632.3 134.4c-9.703-9-24.91-8.453-33.92 1.266l-87.05 93.75l-38.39-38.39c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94l56 56C499.5 285.5 505.6 288 512 288h.4375c6.531-.125 12.72-2.891 17.16-7.672l104-112C642.6 158.6 642 143.4 632.3 134.4z"
+          />
+        </svg>
+        Salvar
+      </button>
+      <button
+        class="botaoAlterar"
+        mat-raised-button
+        color="warn"
+        (click)="alterarDados()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <path
+            d="M223.1 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 223.1 256zM274.7 304H173.3C77.61 304 0 381.7 0 477.4C0 496.5 15.52 512 34.66 512h286.4c-1.246-5.531-1.43-11.31-.2832-17.04l14.28-71.41c1.943-9.723 6.676-18.56 13.68-25.56l45.72-45.72C363.3 322.4 321.2 304 274.7 304zM371.4 420.6c-2.514 2.512-4.227 5.715-4.924 9.203l-14.28 71.41c-1.258 6.289 4.293 11.84 10.59 10.59l71.42-14.29c3.482-.6992 6.682-2.406 9.195-4.922l125.3-125.3l-72.01-72.01L371.4 420.6zM629.5 255.7l-21.1-21.11c-14.06-14.06-36.85-14.06-50.91 0l-38.13 38.14l72.01 72.01l38.13-38.13C643.5 292.5 643.5 269.7 629.5 255.7z"
+          />
+        </svg>
+        Alterar
+      </button>
+      <button
+        class="botaoExcluir"
+        mat-raised-button
+        color="warn"
+        (click)="excluirDados()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <path
+            d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM577.9 223.1l47.03-47.03c9.375-9.375 9.375-24.56 0-33.94s-24.56-9.375-33.94 0L544 190.1l-47.03-47.03c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94l47.03 47.03l-47.03 47.03c-9.375 9.375-9.375 24.56 0 33.94c9.373 9.373 24.56 9.381 33.94 0L544 257.9l47.03 47.03c9.373 9.373 24.56 9.381 33.94 0c9.375-9.375 9.375-24.56 0-33.94L577.9 223.1z"
+          />
+        </svg>
+        Excluir
+      </button>
+      <button class="botaoNovo" mat-raised-button color="warn" (click)="novo()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <path
+            d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"
+          />
+        </svg>
+        Novo
+      </button>
+    </div>
+  </fieldset>
+
+  <fieldset class="relatorio">
+    <legend>Relatório</legend>
+    <div class="col4">
+      <mat-form-field appearance="standard">
+        <mat-label>Filtrar por:</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex.: PC Dell 5200"
+          #input
+        />
+      </mat-form-field>
+
+      <p id="descricaoTabela">Relatório de Produtos Cadastrados.</p>
+      <table
+        aria-describedby="descricaoTabela"
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8"
+      >
+        <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="NOME">
+          <th mat-header-cell *matHeaderCellDef>NOME</th>
+          <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="PREÇO">
+          <th mat-header-cell *matHeaderCellDef>PREÇO (R$)</th>
+          <td mat-cell *matCellDef="let element">{{ element.preco }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsProdutos"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumnsProdutos"
+        ></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="5">
+            No data matching the filter "{{ input.value }}"
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </fieldset>
+</form>

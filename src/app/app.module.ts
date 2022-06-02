@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './component/login/login.module';
 import { HomeComponent } from './component/home/home.component';
 import { CadastroUsuarioComponent } from './component/cadastro-usuario/cadastro-usuario.component';
+import { CadastroProdutoComponent } from './component/cadastro-produto/cadastro-produto.component';
+import { CadastroClienteComponent } from './component/cadastro-cliente/cadastro-cliente.component';
+import { TestesComponent } from './component/testes/testes.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -35,6 +38,9 @@ import { DialogoErroComponent } from './component/dialogo-erro/dialogo-erro.comp
     CadastroUsuarioComponent,
     DialogoComponent,
     DialogoErroComponent,
+    TestesComponent,
+    CadastroProdutoComponent,
+    CadastroClienteComponent,
   ],
   imports: [
     AppRoutingModule,

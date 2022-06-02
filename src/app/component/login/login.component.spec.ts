@@ -15,16 +15,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRadioModule } from '@angular/material/radio';
-import { DbService } from '../db/db.service';
+import { DbUsuarioService } from '../db/db-usuario.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let mockDbService: jasmine.SpyObj<DbService>;
+  let mockDbUsuarioService: jasmine.SpyObj<DbUsuarioService>;
   let mockAppComponent: jasmine.SpyObj<AppComponent>;
 
   beforeEach(async () => {
-    mockDbService = jasmine.createSpyObj('mockDbService', ['login']);
+    mockDbUsuarioService = jasmine.createSpyObj('mockDbService', ['login']);
     await TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
@@ -43,7 +43,7 @@ describe('LoginComponent', () => {
       ],
       providers: [
         { provide: AppComponent, useValue: mockAppComponent },
-        { provide: DbService, useValue: mockDbService },
+        { provide: DbUsuarioService, useValue: mockDbUsuarioService },
       ],
       declarations: [LoginComponent],
     }).compileComponents();

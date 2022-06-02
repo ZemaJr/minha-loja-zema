@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoComponent } from '../dialogo/dialogo.component';
 import { DialogoErroComponent } from '../dialogo-erro/dialogo-erro.component';
@@ -8,36 +8,25 @@ import { DialogoErroComponent } from '../dialogo-erro/dialogo-erro.component';
 @Injectable({
   providedIn: 'root',
 })
-export class DbService {
-  url = 'http://localhost:3000/usuario';
-  constructor(private http: HttpClient, public dialog: MatDialog) {}
+export class DbProdutoService {
+  url = 'http://localhost:3000/produto';
 
-  buscarDados(id: number): Observable<any> {
-    return this.http.get(this.url + '/' + id);
-  }
+  constructor(private http: HttpClient, public dialog: MatDialog) {}
 
   buscarTodosOsDados(): Observable<any> {
     return this.http.get(this.url);
   }
 
-  login(): Observable<any> {
-    return this.http.get(this.url);
+  buscarDados(id: number): Observable<any> {
+    return this.http.get(this.url + '/' + id);
   }
 
-  salvarDados(
-    id: number,
-    nome: string,
-    cpf: number,
-    email: string,
-    senhaConfirmada: string
-  ): void {
+  salvarDados(id: number, nome: string, preco: number): void {
     this.http
       .post(this.url, {
         id: id,
         nome: nome,
-        cpf: cpf,
-        login: email,
-        senha: senhaConfirmada,
+        preco: preco,
       })
       .subscribe({
         next: () => {
@@ -49,20 +38,12 @@ export class DbService {
       });
   }
 
-  alterarDados(
-    id: number,
-    nome: string,
-    cpf: number,
-    email: string,
-    senhaConfirmada: string
-  ): void {
+  alterarDados(id: number, nome: string, preco: number): void {
     this.http
       .put(this.url + '/' + id, {
         id: id,
         nome: nome,
-        cpf: cpf,
-        login: email,
-        senha: senhaConfirmada,
+        preco: preco,
       })
       .subscribe({
         next: () => {
@@ -91,7 +72,7 @@ export class DbService {
         .open(DialogoComponent)
         .afterClosed()
         .subscribe(() => {
-          window.location.reload();
+          document.location.reload();
         });
     } else {
       this.dialog.open(DialogoErroComponent);

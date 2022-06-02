@@ -15,11 +15,11 @@
       "senha": "123"
     },
     {
-      "id": 17,
-      "nome": "João Matheus Editado",
-      "cpf": 85632547188,
-      "login": "joao@wiz.com",
-      "senha": "000"
+      "id": 18,
+      "nome": "Lucas ",
+      "cpf": 98782529636,
+      "login": "lucas@wiz.com",
+      "senha": "123"
     }
   ],
   "cliente": [
@@ -34,9 +34,19 @@
   ],
   "produto": [
     {
-      "id": 1,
+      "id": 2,
+      "nome": "Atari 1200 V2",
+      "preco": 5000
+    },
+    {
+      "id": 3,
       "nome": "PC Dell 5200",
-      "preco": "6500"
+      "preco": 7500
+    },
+    {
+      "id": 4,
+      "nome": "XBox One",
+      "preco": 2500
     }
   ]
 }

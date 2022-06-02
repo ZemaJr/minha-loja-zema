@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DbService } from '../db/db.service';
+import { DbUsuarioService } from '../db/db-usuario.service';
 import { AppComponent } from './../../app.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [DbService],
+  providers: [DbUsuarioService],
 })
 export class LoginComponent implements OnInit {
   siteKey: string = '6LfWp9AeAAAAAEEmzdE7HE6UNYnPqq11ApIHh99c';
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   statusBotao: string = 'true';
 
   constructor(
-    private dbService: DbService,
+    private dbUsuarioService: DbUsuarioService,
     private router: Router,
     private appComponent: AppComponent
   ) {
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.statusLogin = '';
       this.textoBotao = 'Conectando...';
-      this.dbService.login().subscribe({
+      this.dbUsuarioService.login().subscribe({
         next: (respostaLogin) => {
           for (let i in respostaLogin) {
             if (

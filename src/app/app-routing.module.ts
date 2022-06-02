@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
-import { CadastroUsuarioComponent } from './component/cadastro-usuario/cadastro-usuario.component';
 
 const routes: Routes = [
   {
@@ -15,7 +14,6 @@ const routes: Routes = [
       import('./component/login/login.module').then((m) => m.LoginModule),
   },
   { path: 'home', component: HomeComponent },
-  { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
 ];
 
 @NgModule({

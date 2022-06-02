@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { DbService } from '../db/db.service';
+import { DbUsuarioService } from '../db/db-usuario.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [DbService],
+  providers: [DbUsuarioService],
 })
 export class HomeComponent implements OnInit {
   hide: boolean = true;
@@ -17,12 +17,12 @@ export class HomeComponent implements OnInit {
   senhaCriada = new FormControl('', [Validators.required]);
   senhaConfirmada = new FormControl('', [Validators.required]);
 
-  constructor(private dbService: DbService) {}
+  constructor(private dbUsuarioService: DbUsuarioService) {}
 
   ngOnInit(): void {}
 
   buscarDados() {
-    this.dbService.buscarDados(this.id.value).subscribe({
+    this.dbUsuarioService.buscarDados(this.id.value).subscribe({
       next: (data) => {
         this.id.setValue(data.id);
         this.nome.setValue(data.nome);
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   salvarDados() {
-    this.dbService.salvarDados(
+    this.dbUsuarioService.salvarDados(
       this.id.value,
       this.nome.value,
       this.cpf.value,
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   editarDados() {
-    this.dbService.alterarDados(
+    this.dbUsuarioService.alterarDados(
       this.id.value,
       this.nome.value,
       this.cpf.value,
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   excluirDados() {
-    this.dbService.excluirDados(this.id.value);
+    this.dbUsuarioService.excluirDados(this.id.value);
   }
 
   novo() {

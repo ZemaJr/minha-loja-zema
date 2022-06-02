@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormControl, Validators } from '@angular/forms';
-import { DbService } from '../db/db.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { DbUsuarioService } from '../db/db-usuario.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -20,16 +20,16 @@ export class CadastroUsuarioComponent implements OnInit {
   displayedColumnsUsuarios: string[] = ['ID', 'NOME', 'CPF', 'LOGIN', 'SENHA'];
   dataSource = new MatTableDataSource();
 
-  constructor(private dbService: DbService) {}
+  constructor(private dbUsuarioService: DbUsuarioService) {}
 
   ngOnInit(): void {
-    this.dbService.buscarTodosOsDados().subscribe({
+    this.dbUsuarioService.buscarTodosOsDados().subscribe({
       next: (dados) => {
         this.users = dados;
         this.dataSource = dados;
       },
       error: () => {
-        this.dbService.openDialog(false);
+        this.dbUsuarioService.openDialog(false);
       },
     });
   }
@@ -40,7 +40,7 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   buscarDados() {
-    this.dbService.buscarDados(this.usuarioId.value).subscribe({
+    this.dbUsuarioService.buscarDados(this.usuarioId.value).subscribe({
       next: (dados) => {
         this.usuarioId.setValue(dados.id);
         this.usuarioNome.setValue(dados.nome);
@@ -49,14 +49,14 @@ export class CadastroUsuarioComponent implements OnInit {
         this.usuarioSenha.setValue(dados.senha);
       },
       error: () => {
-        this.dbService.openDialog(false);
+        this.dbUsuarioService.openDialog(false);
       },
     });
   }
 
   salvarDados() {
     if (this.validarDados()) {
-      this.dbService.salvarDados(
+      this.dbUsuarioService.salvarDados(
         this.usuarioId.value,
         this.usuarioNome.value,
         this.usuarioCPF.value,
@@ -68,7 +68,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   alterarDados() {
     if (this.validarDados()) {
-      this.dbService.alterarDados(
+      this.dbUsuarioService.alterarDados(
         this.usuarioId.value,
         this.usuarioNome.value,
         this.usuarioCPF.value,
@@ -80,7 +80,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   excluirDados() {
     if (this.validarDados()) {
-      this.dbService.excluirDados(this.usuarioId.value);
+      this.dbUsuarioService.excluirDados(this.usuarioId.value);
     }
   }
 
@@ -99,7 +99,7 @@ export class CadastroUsuarioComponent implements OnInit {
       this.usuarioEmail.value == '' ||
       this.usuarioSenha.value == ''
     ) {
-      this.dbService.openDialog(false);
+      this.dbUsuarioService.openDialog(false);
       return false;
     }
     return true;
